@@ -1,0 +1,47 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "next",
+    "next/core-web-vitals"
+  ],
+  "plugins": ["simple-import-sort"],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {
+    "curly": ["error", "all"],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-shadow": "error",
+    "import/no-anonymous-default-export": "off",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["^react$", "^react/(.*)"],
+          ["^next$", "^next/(.*)"],
+          ["^@?\\w"],
+          ["^\\u0000"],
+          ["^@?\\w.*\\u0000$", "^@?\\w"],
+          [
+            "^(@api|@assets|@components|@hooks|@helpers|@layouts|@lang|@lib|@providers|@queries|@routes|@typings|@utils|@store|@styles|@theme|@views)(/.*|$)"
+          ],
+          [
+            "^\\.\\.(?!/?$)",
+            "^\\.\\./?$",
+            "^\\./(?=.*/)(?!/?$)",
+            "^\\.(?!/?$)",
+            "^\\./?$"
+          ],
+          []
+        ]
+      }
+    ],
+    "simple-import-sort/exports": "error",
+    "import/named": "off",
+    "prefer-arrow-callback": ["error", { "allowNamedFunctions": true }],
+    "func-style": ["error", "expression", { "allowArrowFunctions": true }]
+  }
+}
